@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        //1.新增timeout
+        let xhr = new XMLHttpRequest()
+        //设置 超时时间
+        xhr.timeout = 3000
+        //设置超时事件
+        xhr.ontimeout = function () {
+            console.log('超时了');
+        }
+        xhr.open('GET', 'http:www.liulongbin.top:3006/api/getbooks?id=1')
+        xhr.send()
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText);
+            }
+        }
+
+        //2.新增formdata(可以用来获取表单的值)
+        let fd = new FormData()
+        fd.append('uname', 'xxs')
+        fd.append('upwd', '13243')
+
+        let xhr2 = new XMLHttpRequest()
+        xhr2.open('POST', 'http:www.liulongbin.top:3006/api/formdata')
+        // xhr2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        xhr2.send(fd)
+        xhr2.onreadystatechange = function () {
+            if (xhr2.readyState === 4 && xhr2.status === 200) {
+                console.log(xhr2.responseText);
+            }
+        }
+
+
+        //3.文件上传
+
+
+
+        //4.显示文件上传速度
+
+
+
+    </script>
+</body>
+
+</html>

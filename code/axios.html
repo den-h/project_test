@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../lib/jquery.js"></script>
+</head>
+
+<body>
+    <button id="btn1">发起get请求</button>
+    <button id="btn2">发起post请求</button>
+    <button id="btn3">发起axios请求</button>
+
+    <script>
+        //axios是专注于网络数据请求的库，简单易用，轻量化
+
+        //get请求
+        $(function () {
+            $('#btn1').on('click', function () {
+                let url = 'http:www.liulongbin.top:3006/api/get'
+                let paramsDate = {
+                    name: 'zhangs',
+                    age: 18
+                }
+                axios.get(url, { params: paramsDate }).then(function(res){
+                    console.log(res.data);
+                    
+                })
+            })
+        })
+
+
+        //post请求
+        $(function () {
+            $('#btn2').on('click', function () {
+                let url = 'http:www.liulongbin.top:3006/api/post'
+                let paramsDate = {
+                    address:'长沙',
+                    location:'天心区'
+                }
+                axios.post(url,paramsDate).then(function(res){
+                    console.log(res.data);
+                    
+                })
+            })
+        })
+
+
+         //axios请求
+         $(function () {
+            $('#btn3').on('click', function () {
+            axios({
+                method:'POST',
+                url:'http:www.liulongbin.top:3006/api/post',
+                data:{
+                    name:'xixi',
+                    age:20
+                }
+            }).then((res)=>{
+                console.log(res.data);
+                
+            })
+               
+            })
+        })
+    </script>
+</body>
+
+</html>

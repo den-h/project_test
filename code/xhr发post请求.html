@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //xhr发post请求:
+        //1.创建XHR对象
+        let xhr = new XMLHttpRequest()
+        //2.调用open函数
+        xhr.open('POST', 'http:www.liulongbin.top:3006/api/addbook')
+        //3.设置content-type属性（固定写法）
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+        //4.调用send函数
+        xhr.send('bookname=平凡的世界&author=路遥&publisher=上海图书出版社')
+        //5.监听onreadystatechange事件
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {//readyState属性表示当前ajax所处的状态，4表示done；
+                console.log(xhr.responseText);
+            }
+        }
+
+
+    </script>
+</body>
+</html>
